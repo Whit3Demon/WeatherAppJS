@@ -12,7 +12,7 @@ export default function WeatherView() {
   const [isPermissions, setIsPermissions] = useState(false);  //Location Permissons View value
   const [isError, setIsError] = useState(false)   //Error View value
 
-  const [requestTimer, setRequestTimer] = useState(1800000); // 1800000 = 30 minutes in milliseconds (Timer for request)
+  const [requestTimer, setRequestTimer] = useState(1800000); // 1800000 = 30 minutes in milliseconds (Timer for)
 
   const [dataName, setDataName] = useState(null);
   const [dataImage, setDataImage] = useState(null);

@@ -1,18 +1,18 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native'
 import { createBottomTabNavigator,  } from '@react-navigation/bottom-tabs'
 import { Ionicons } from "@expo/vector-icons";
 
-import ChatView from './ChatView';
-import WeatherView from './WeatherView';
+import ChatView from "../Views/ChatView";
+import WeatherView from "../Views/WeatherView"
 
 
 
 const Tab = createBottomTabNavigator();
 
-const BottomTab = () => {
+const BottomTab = ({navigation}) => {
   return (
+    
     <Tab.Navigator>
         <Tab.Screen
          name="Погода"
