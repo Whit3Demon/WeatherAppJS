@@ -2,7 +2,7 @@ import React from 'react';
 import OnboardingScr from '../../components/OnboardingScr';
 
 interface ThirdScrOnboardingProps {
-  navigation: any; // Используйте конкретный тип для навигации в приложении
+  navigation: any; 
 }
 
 const ThirdScrOnboarding: React.FC<ThirdScrOnboardingProps> = ({ navigation }) => {

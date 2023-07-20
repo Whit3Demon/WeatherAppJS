@@ -1,17 +1,25 @@
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useHeaderHeight } from '@react-navigation/elements'
 
 
 export default function ChatView() {
   const [text, onChangeText] = useState<string>('');
+  const height = useHeaderHeight()
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Экран Чата</Text>
-      </View>
-      <View style={styles.container}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={height}
+        behavior={Platform.OS === 'ios' ? 'padding' : "height"}
+        enabled
+        style={styles.container}
+      >
+
+        <View style={styles.content}>
+          <Text>Контент экрана</Text>
+        </View>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -19,8 +27,6 @@ export default function ChatView() {
             value={text}
             placeholder="Введите сообщение..."
           />
-        </View>
-        <View style={styles.buttonContainer}>
           <Ionicons.Button
             style={styles.button}
             name='paper-plane-outline'
@@ -30,45 +36,33 @@ export default function ChatView() {
             onPress={() => console.log(text)}
           />
         </View>
-      </View>
-    </SafeAreaView>
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flex: 1,
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    position: 'absolute',
-    bottom: -622
   },
   inputContainer: {
-    flex: 1,
-
+    flexDirection: "row",
+    backgroundColor: '#ccc',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
   },
-  buttonContainer: {
-    marginLeft: 0,
+  input: {
+    flex: 1,
+    height: 40,
+    fontSize: 16,
   },
   button: {
     borderWidth: 2,
     height: 40
   },
-
-  input: {
-
-    height: 40,
-    marginRight: 0,
-    borderWidth: 2,
-    padding: 10,
-    backgroundColor: "white"
-  },
-
 });
-
-
- 
-
- 
-

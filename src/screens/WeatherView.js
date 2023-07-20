@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import { ActivityIndicator } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function WeatherView() {
+export default function WeatherView() { 
 
   const [isLoading, setIsLoading] = useState(true);     //loading View value
   const [isPermissions, setIsPermissions] = useState(false);  //Location Permissons View value
