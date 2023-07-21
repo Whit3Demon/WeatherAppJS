@@ -1,22 +1,29 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useHeaderHeight } from '@react-navigation/elements'
-
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { useHeaderHeight } from "@react-navigation/elements";
 
 export default function ChatView() {
-  const [text, onChangeText] = useState<string>('');
-  const height = useHeaderHeight()
+  const [text, onChangeText] = useState<string>("");
+  const height = useHeaderHeight();
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
         keyboardVerticalOffset={height}
-        behavior={Platform.OS === 'ios' ? 'padding' : "height"}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         enabled
         style={styles.container}
       >
-
         <View style={styles.content}>
           <Text>Контент экрана</Text>
         </View>
@@ -29,7 +36,7 @@ export default function ChatView() {
           />
           <Ionicons.Button
             style={styles.button}
-            name='paper-plane-outline'
+            name="paper-plane-outline"
             size={20}
             color="#000000"
             backgroundColor={"white"}
@@ -47,12 +54,12 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   inputContainer: {
     flexDirection: "row",
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
@@ -63,6 +70,6 @@ const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 2,
-    height: 40
+    height: 40,
   },
 });

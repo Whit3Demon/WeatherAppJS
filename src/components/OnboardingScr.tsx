@@ -1,4 +1,3 @@
-
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
@@ -11,25 +10,26 @@ interface OnboardingScrProps {
   onSkip: () => void;
 }
 
-const OnboardingScr: React.FC<OnboardingScrProps> = ({ bigText, smallText, image, isStart, onNext, onSkip }) => {
+const OnboardingScr: React.FC<OnboardingScrProps> = ({
+  bigText,
+  smallText,
+  image,
+  isStart,
+  onNext,
+  onSkip,
+}) => {
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
       <Text style={styles.weatherText}>{bigText}</Text>
       <Text style={styles.subText}>{smallText}</Text>
-      <TouchableOpacity
-        style={styles.continueButton}
-        onPress={onNext}
-      >
+      <TouchableOpacity style={styles.continueButton} onPress={onNext}>
         <Text style={styles.buttonText}>
-          {isStart ? 'Начать' : 'Продолжить'}
+          {isStart ? "Начать" : "Продолжить"}
         </Text>
       </TouchableOpacity>
       {!isStart && (
-        <TouchableOpacity
-          style={styles.skipButton}
-          onPress={onSkip}
-        >
+        <TouchableOpacity style={styles.skipButton} onPress={onSkip}>
           <Text style={styles.buttonText}>Пропустить</Text>
         </TouchableOpacity>
       )}
@@ -40,8 +40,8 @@ const OnboardingScr: React.FC<OnboardingScrProps> = ({ bigText, smallText, image
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 16,
   },
   image: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   weatherText: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 8,
   },
   subText: {
@@ -72,10 +72,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonText: {
-    color: 'black',
+    color: "black",
     fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 

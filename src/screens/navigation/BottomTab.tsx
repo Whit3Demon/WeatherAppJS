@@ -1,5 +1,5 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import ChatView from "../ChatView";
 import WeatherView from "../WeatherView";
@@ -15,9 +15,9 @@ const BottomTab: React.FC = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name={focused ? 'cloudy' : 'cloudy-outline'}
+              name={focused ? "cloudy" : "cloudy-outline"}
               size={24}
-              color={focused ? 'blue' : 'gray'}
+              color={focused ? "blue" : "gray"}
             />
           ),
         }}
@@ -28,9 +28,9 @@ const BottomTab: React.FC = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <Ionicons
-              name={focused ? 'chatbubbles' : 'chatbubbles-outline'}
+              name={focused ? "chatbubbles" : "chatbubbles-outline"}
               size={24}
-              color={focused ? 'blue' : 'gray'}
+              color={focused ? "blue" : "gray"}
             />
           ),
         }}

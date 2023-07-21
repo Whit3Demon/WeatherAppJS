@@ -1,19 +1,21 @@
-import React from 'react';
-import OnboardingScr from '../../components/OnboardingScr';
+import React from "react";
+import OnboardingScr from "../../components/OnboardingScr";
 
 interface ThirdScrOnboardingProps {
-  navigation: any; 
+  navigation: any;
 }
 
-const ThirdScrOnboarding: React.FC<ThirdScrOnboardingProps> = ({ navigation }) => {
+const ThirdScrOnboarding: React.FC<ThirdScrOnboardingProps> = ({
+  navigation,
+}) => {
   return (
     <OnboardingScr
       bigText="Будь готов"
       smallText="Устал от неожиданностей? Мы предупредим!"
-      image={require('../../../assets/images/thrdOnboarding.jpg')}
+      image={require("../../../assets/images/thrdOnboarding.jpg")}
       isStart={true}
-      onNext={() => navigation.navigate('BottomTab')}
-      onSkip={() => navigation.navigate('BottomTab')}
+      onNext={() => navigation.navigate("BottomTab")}
+      onSkip={() => navigation.navigate("BottomTab")}
     />
   );
 };
