@@ -1,8 +1,9 @@
 import React from "react";
+import { NavigationProp } from "@react-navigation/native";
 import OnboardingScr from "../../components/OnboardingScr";
 
 interface SecondScrOnboardingProps {
-  navigation: any;
+  navigation: NavigationProp<any>;
 }
 
 const SecondScrOnboarding: React.FC<SecondScrOnboardingProps> = ({
