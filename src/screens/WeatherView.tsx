@@ -6,7 +6,6 @@ import { ActivityIndicator } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function WeatherView() {
-  
   const [isLoading, setIsLoading] = useState(true); //loading View value
   const [isPermissions, setIsPermissions] = useState(false); //Location Permissons View value
   const [isError, setIsError] = useState(false); //Error View value
@@ -15,27 +14,29 @@ export default function WeatherView() {
 
   const [dataName, setDataName] = useState(null);
   const [dataImage, setDataImage] = useState(null);
-  const [dataTemp, setDataTemp] = useState(null);
+  const [dataTemp, setDataTemp] = useState<number | null>(null);
   const [dataWeatherDescription, setDataWeatherDescription] = useState(null);
   const [dataWindSpeed, setDataWindSpeed] = useState(null);
   const [dataHumidity, setDataHumidity] = useState(null);
 
-  const [correctDate, setCorrectDate] = useState<string>('');
+  const [correctDate, setCorrectDate] = useState<string>("");
 
   {
     /* Get Correct Date */
   }
   const currentDate = () => {
     const currentDate = new Date();
-    const options: Intl.DateTimeFormatOptions = { weekday: "long", month: "long", day: "numeric" };
-    const formattedDate: string = currentDate.toLocaleDateString("ru-RU", options);
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+    };
+    const formattedDate: string = currentDate.toLocaleDateString(
+      "ru-RU",
+      options
+    );
     setCorrectDate(formattedDate);
   };
-  
-  
-  
-  
-
 
   {
     /* AsyncStorage Start Block */
@@ -75,26 +76,39 @@ export default function WeatherView() {
       console.log("start loading data");
       const jsonDataName = await AsyncStorage.getItem("keyForDataName");
       const jsonDataTemp = await AsyncStorage.getItem("keyForDataTemp");
-      const jsonDataWeatherDescription = await AsyncStorage.getItem("keyForDataWeatherDescription");
-      const jsonDataWindSpeed = await AsyncStorage.getItem("keyForDataWindSpeed");
+      const jsonDataWeatherDescription = await AsyncStorage.getItem(
+        "keyForDataWeatherDescription"
+      );
+      const jsonDataWindSpeed = await AsyncStorage.getItem(
+        "keyForDataWindSpeed"
+      );
       const jsonDataHumidity = await AsyncStorage.getItem("keyForDataHumidity");
       const jsonCorrectDate = await AsyncStorage.getItem("keyForCorrectDate");
 
       setDataName(jsonDataName !== null ? JSON.parse(jsonDataName) : null);
       setDataTemp(jsonDataTemp !== null ? JSON.parse(jsonDataTemp) : null);
-      setDataWeatherDescription(jsonDataWeatherDescription !== null ? JSON.parse(jsonDataWeatherDescription) : null);
-      setDataWindSpeed(jsonDataWindSpeed !== null ? JSON.parse(jsonDataWindSpeed) : null);
-      setDataHumidity(jsonDataHumidity !== null ? JSON.parse(jsonDataHumidity) : null);
-      setCorrectDate(jsonCorrectDate !== null ? JSON.parse(jsonCorrectDate) : null);
-
+      setDataWeatherDescription(
+        jsonDataWeatherDescription !== null
+          ? JSON.parse(jsonDataWeatherDescription)
+          : null
+      );
+      setDataWindSpeed(
+        jsonDataWindSpeed !== null ? JSON.parse(jsonDataWindSpeed) : null
+      );
+      setDataHumidity(
+        jsonDataHumidity !== null ? JSON.parse(jsonDataHumidity) : null
+      );
+      setCorrectDate(
+        jsonCorrectDate !== null ? JSON.parse(jsonCorrectDate) : null
+      );
 
       if (
-        (dataTemp != null &&
+        dataTemp != null &&
         dataHumidity != null &&
         dataName != null &&
         dataWeatherDescription != null &&
         dataWindSpeed != null &&
-        correctDate != null)
+        correctDate != null
       ) {
         setIsLoading(false);
         console.log("data is not empty");
@@ -147,7 +161,10 @@ export default function WeatherView() {
   {
     /* fetch Data Start Block */
   }
-  const fetchDataFromApi = async (latitude: string | number, longitude: string | number) => {
+  const fetchDataFromApi = async (
+    latitude: string | number,
+    longitude: string | number
+  ) => {
     console.log("start");
     try {
       const response = await fetch(
@@ -162,7 +179,7 @@ export default function WeatherView() {
       try {
         setDataName(data.name);
         setDataImage(data.weather[0].icon);
-        setDataTemp(data.main.temp);
+        setDataTemp(Math.floor(data.main.temp));
         setDataWeatherDescription(data.weather[0].description);
         setDataWindSpeed(data.wind.speed);
         setDataHumidity(data.main.humidity);
@@ -258,7 +275,7 @@ export default function WeatherView() {
         <Text style={styles.weatherDateText}>{correctDate}</Text>
 
         {/* simple line */}
-        <View style={styles.line}/> 
+        <View style={styles.line} />
       </View>
 
       {/* Wind && Humitity */}
@@ -341,7 +358,6 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     marginTop: 20,
   },
-
 
   errorContainer: {
     flex: 1,
