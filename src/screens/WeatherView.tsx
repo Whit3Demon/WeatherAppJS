@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as Location from "expo-location";
 import { ActivityIndicator } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { API_KEY } from "@env" 
 export default function WeatherView() {
   const [isLoading, setIsLoading] = useState(true); //loading View value
   const [isPermissions, setIsPermissions] = useState(false); //Location Permissons View value
@@ -156,7 +156,7 @@ export default function WeatherView() {
   ) => {
     try {
       const response = await fetch(
-        "https://api.openweathermap.org/data/2.5/weather?appid=26f6cadbb5b881afd9c874a155c8ef21&units=metric&lang=ru&lat=" +
+        "https://api.openweathermap.org/data/2.5/weather?appid="+API_KEY+"&units=metric&lang=ru&lat=" +
           latitude +
           "&lon=" +
           longitude
