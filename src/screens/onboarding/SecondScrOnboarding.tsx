@@ -1,5 +1,5 @@
 import React from "react";
-import type { StackNavigationProp } from '@react-navigation/stack';
+import type { StackNavigationProp } from "@react-navigation/stack";
 import OnboardingScr from "../../components/OnboardingScr";
 
 type SecondScrOnboardingParams = {
@@ -32,4 +32,3 @@ const SecondScrOnboarding: React.FC<SecondScrOnboardingProps> = ({
 };
 
 export default SecondScrOnboarding;
-

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import OnboardingScr from "../../components/OnboardingScr";
-import type { StackNavigationProp } from '@react-navigation/stack';
+import type { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type FirstScrOnboardingParams = {
@@ -9,7 +9,7 @@ type FirstScrOnboardingParams = {
 };
 
 type FirstScrOnboardingNavigationProp = StackNavigationProp<
-FirstScrOnboardingParams,
+  FirstScrOnboardingParams,
   "SecondOnboarding"
 >;
 
@@ -20,30 +20,27 @@ interface FirstScrOnboardingProps {
 const FirstScrOnboarding: React.FC<FirstScrOnboardingProps> = ({
   navigation,
 }) => {
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const firstLaunchDataFromStorage = await AsyncStorage.getItem("keyForFirstLaunchOnboarding");
+        const firstLaunchDataFromStorage = await AsyncStorage.getItem(
+          "keyForFirstLaunchOnboarding"
+        );
         // Проверяем, что firstLaunchDataFromStorage не пустой
         if (firstLaunchDataFromStorage) {
           const parsedData = JSON.parse(firstLaunchDataFromStorage);
-          const isFirstLaunch = parsedData;  
+          const isFirstLaunch = parsedData;
           if (isFirstLaunch === true) {
             navigation.navigate("BottomTab");
           }
-          
-        } 
-
-      } catch (error) {null}
+        }
+      } catch (error) {
+        null;
+      }
     };
-  
+
     fetchData();
   }, []);
-  
-  
-  
-  
 
   return (
     <OnboardingScr

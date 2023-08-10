@@ -1,7 +1,6 @@
 import React from "react";
 import OnboardingScr from "../../components/OnboardingScr";
-import type { StackNavigationProp } from '@react-navigation/stack';
-
+import type { StackNavigationProp } from "@react-navigation/stack";
 
 type ThirdScrOnboardingParams = {
   ThirdOnboarding: undefined; // Define the route name and any potential params
@@ -9,7 +8,7 @@ type ThirdScrOnboardingParams = {
 };
 
 type ThirdScrOnboardingNavigationProp = StackNavigationProp<
-ThirdScrOnboardingParams,
+  ThirdScrOnboardingParams,
   "ThirdOnboarding"
 >;
 

@@ -11,18 +11,13 @@ const AppNavigator = createStackNavigator(
     ThirdOnboarding: { screen: ThirdScrOnboarding },
     BottomTab: { screen: BottomTab },
   },
-  
+
   {
     initialRouteName: "FirstOnboarding",
     defaultNavigationOptions: {
       headerShown: false,
-      // headerStyle: {
-      //   backgroundColor: "#494949", // Устанавливаем цвет Navigation Bar на темно-серый
-      // },
-
     },
-  },
-  
+  }
 );
 
 export default AppNavigator;
