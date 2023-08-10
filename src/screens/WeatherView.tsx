@@ -65,15 +65,11 @@ export default function WeatherView() {
         JSON.stringify(true)
       ); //disable onboarding on next startup
 
-      console.log("Data saved successfully!");
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {null}
   };
 
   const loadData = async () => {
     try {
-      console.log("start loading data");
       const jsonDataName = await AsyncStorage.getItem("keyForDataName");
       const jsonDataTemp = await AsyncStorage.getItem("keyForDataTemp");
       const jsonDataWeatherDescription = await AsyncStorage.getItem(
@@ -111,13 +107,8 @@ export default function WeatherView() {
         correctDate != null
       ) {
         setIsLoading(false);
-        console.log("data is not empty");
-      } else {
-        console.log("data is empty");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      } else {null}
+    } catch (error) {null}
   };
 
   {
@@ -139,9 +130,7 @@ export default function WeatherView() {
           const location = await Location.getCurrentPositionAsync({});
           fetchDataFromApi(location.coords.latitude, location.coords.longitude);
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {null}
     };
 
     loadDataAndFetchData();
@@ -165,7 +154,6 @@ export default function WeatherView() {
     latitude: string | number,
     longitude: string | number
   ) => {
-    console.log("start");
     try {
       const response = await fetch(
         "https://api.openweathermap.org/data/2.5/weather?appid=26f6cadbb5b881afd9c874a155c8ef21&units=metric&lang=ru&lat=" +
@@ -197,7 +185,6 @@ export default function WeatherView() {
           setRequestTimer(1800000); // 1800000 = 30 minutes in milliseconds
         }
       } catch {
-        console.log("error");
         setIsError(true);
         setRequestTimer(300000); // 300000 = 5 minutes in milliseconds
       }

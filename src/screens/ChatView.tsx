@@ -5,7 +5,6 @@ import {
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
@@ -20,7 +19,7 @@ export default function ChatView() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
         keyboardVerticalOffset={height}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        behavior={"height"}
         enabled
         style={styles.container}
       >

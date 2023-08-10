@@ -1,9 +1,19 @@
 import React from "react";
-import { NavigationProp } from "@react-navigation/native";
+import type { StackNavigationProp } from '@react-navigation/stack';
 import OnboardingScr from "../../components/OnboardingScr";
 
+type SecondScrOnboardingParams = {
+  ThirdOnboarding: undefined; // Define the route name and any potential params
+  BottomTab: undefined; // Define the route name and any potential params
+};
+
+type SecondScrOnboardingNavigationProp = StackNavigationProp<
+  SecondScrOnboardingParams,
+  "ThirdOnboarding"
+>;
+
 interface SecondScrOnboardingProps {
-  navigation: NavigationProp<any>;
+  navigation: SecondScrOnboardingNavigationProp;
 }
 
 const SecondScrOnboarding: React.FC<SecondScrOnboardingProps> = ({
@@ -22,3 +32,4 @@ const SecondScrOnboarding: React.FC<SecondScrOnboardingProps> = ({
 };
 
 export default SecondScrOnboarding;
+

@@ -8,7 +8,19 @@ const Tab = createBottomTabNavigator();
 
 const BottomTab: React.FC = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+    screenOptions={{
+      tabBarHideOnKeyboard: true,
+      tabBarStyle:{
+        backgroundColor: 'rgba(34,36,40,1)'
+      },
+      headerStyle: {
+        backgroundColor: 'rgba(34,36,40,1)'
+      },
+      headerTintColor: '#fff',
+      
+   }}>
+      
       <Tab.Screen
         name="Погода"
         component={WeatherView}

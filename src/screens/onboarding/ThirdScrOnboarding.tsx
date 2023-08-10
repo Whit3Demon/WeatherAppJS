@@ -1,8 +1,20 @@
 import React from "react";
 import OnboardingScr from "../../components/OnboardingScr";
+import type { StackNavigationProp } from '@react-navigation/stack';
+
+
+type ThirdScrOnboardingParams = {
+  ThirdOnboarding: undefined; // Define the route name and any potential params
+  BottomTab: undefined; // Define the route name and any potential params
+};
+
+type ThirdScrOnboardingNavigationProp = StackNavigationProp<
+ThirdScrOnboardingParams,
+  "ThirdOnboarding"
+>;
 
 interface ThirdScrOnboardingProps {
-  navigation: any;
+  navigation: ThirdScrOnboardingNavigationProp;
 }
 
 const ThirdScrOnboarding: React.FC<ThirdScrOnboardingProps> = ({
