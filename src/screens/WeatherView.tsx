@@ -163,7 +163,6 @@ export default function WeatherView() {
       );
       const data = await response.json();
 
-      console.log(data);
       try {
         setDataName(data.name);
         setDataImage(data.weather[0].icon);

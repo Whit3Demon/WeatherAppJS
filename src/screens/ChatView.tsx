@@ -39,7 +39,7 @@ export default function ChatView() {
             size={20}
             color="#000000"
             backgroundColor={"white"}
-            onPress={() => console.log(text)}
+            onPress={() => console.log()}
           />
         </View>
       </KeyboardAvoidingView>
