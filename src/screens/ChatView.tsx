@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useHeaderHeight } from "@react-navigation/elements";
@@ -18,9 +19,8 @@ export default function ChatView() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
-        keyboardVerticalOffset={height}
+        keyboardVerticalOffset={Platform.OS === "ios" ? height : height + 25}
         behavior={"height"}
-        enabled
         style={styles.container}
       >
         <View style={styles.content}>
